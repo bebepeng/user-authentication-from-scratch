@@ -1,20 +1,8 @@
-# Sinatra template application
-
-This application can be used as a starting point for a [Postgres](http://www.postgresql.org/)
-database backed, via [Sequel](http://sequel.jeremyevans.net/), application that uses
-[Sinatra](http://www.sinatrarb.com/). It can be deployed to [Heroku](https://www.heroku.com/).
-
-There are a few things you need to change for your application:
-
-1. Change `scripts/create_databases.sql` to create both your development and test databases.
+## Development
 1. Copy the `.env.example` file to `.env`.
 1. Change the `.env` file to include your database connection strings for both your development
 and test databases. This file is ignored by git (see .gitignore) to protect your secrets
 from the outside world.
-1. Add your migrations to the `migrations` folder. Once you have one migration there, you can
-delete the `.gitsave` file.
-
-## Development
 1. `bundle install`
 1. Create a database by running `psql -d postgres -f scripts/create_databases.sql`
 1. Run the migrations in the development database using `rake db:migrate`. If you would
