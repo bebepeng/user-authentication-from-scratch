@@ -6,7 +6,7 @@ database backed, via [Sequel](http://sequel.jeremyevans.net/), application that 
 
 There are a few things you need to change for your application:
 
-1. Change `scrips/create_databases.sql` to create both your development and test databases.
+1. Change `scripts/create_databases.sql` to create both your development and test databases.
 1. Copy the `.env.example` file to `.env`.
 1. Change the `.env` file to include your database connection strings for both your development
 and test databases. This file is ignored by git (see .gitignore) to protect your secrets
@@ -27,3 +27,7 @@ details.
 ## Migrations on Heroku
 To run the migrations on heroku, run `heroku run 'rake db:migrate'`. If you
 do not have a Heroku configuration variable named DATABASE_URL, then you will need to create one.
+
+# Staging and Production URLs
+Staging URL: cryptic-falls-6403.herokuapp.com
+Production URL: salty-eyrie-1228.herokuapp.com
