@@ -10,7 +10,7 @@ namespace :db do
     environment = ENV['RACK_ENV'] || 'development'
     version = args[:version]
     migrations_directory = 'migrations'
-    connection_string = ENV.fetch("DATABASE_URL_#{environment.upcase}") || ENV.fetch('DATABASE_URL')
+    connection_string = ENV["DATABASE_URL_#{environment.upcase}"] || ENV['DATABASE_URL']
 
       db = Sequel.connect(connection_string)
     message = if args[:version].nil?
