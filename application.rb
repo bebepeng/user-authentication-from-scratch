@@ -34,4 +34,8 @@ class Application < Sinatra::Application
     erb :home, :locals => {:email => @users_table[:id => session[:id]][:email]}
   end
 
+  post '/home' do
+    session.clear
+    redirect '/'
+  end
 end
