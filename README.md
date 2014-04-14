@@ -19,4 +19,4 @@ do not have a Heroku configuration variable named DATABASE_URL, then you will ne
 #URLs
 Staging URL: cryptic-falls-6403.herokuapp.com
 Production URL: salty-eyrie-1228.herokuapp.com
-Tracker URL: https://www.pivotaltracker.com/n/projects/1060100
+Tracker URL: https://www.pivotaltracker.com/n/projects/1060100  
