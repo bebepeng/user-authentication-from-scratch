@@ -25,9 +25,10 @@ details.
 1. Run tests using `rspec`. The tests will clean up the database before each test run.
 
 ## Migrations on Heroku
-To run the migrations on heroku, run `heroku run 'rake db:migrate'`. If you
+To run the migrations on heroku, run `heroku run 'rake db:migrate' --app <App name>`. If you
 do not have a Heroku configuration variable named DATABASE_URL, then you will need to create one.
 
-# Staging and Production URLs
+#URLs
 Staging URL: cryptic-falls-6403.herokuapp.com
 Production URL: salty-eyrie-1228.herokuapp.com
+Tracker URL: https://www.pivotaltracker.com/n/projects/1060100
