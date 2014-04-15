@@ -24,3 +24,7 @@ h1 {
 .home {
     margin: 2em;
 }
+
+.error {
+    color: red;
+}

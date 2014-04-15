@@ -40,13 +40,17 @@ class Application < Sinatra::Application
   end
 
   get '/login' do
-    erb :login
+    erb :login, :locals => {:error => nil}
   end
 
   post '/login' do
     email = params[:email]
     #password_input = params[:password]
-    session[:id] = @users_table[:email => email][:id]
-    redirect '/'
+    if @users_table[:email => email].nil?
+      erb :login, :locals => {:error => 'Email / password is invalid.'}
+    else
+      session[:id] = @users_table[:email => email][:id]
+      redirect '/'
+    end
   end
 end

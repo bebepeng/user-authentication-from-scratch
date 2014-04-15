@@ -37,4 +37,13 @@ feature 'User Authentication App' do
     click_on 'Login'
     expect(page).to have_content 'Welcome, sample@example.com'
   end
+
+  scenario 'User that has not registered cannot login' do
+    visit '/'
+    click_on 'Login'
+    fill_in 'email', :with => "hey@hello.com"
+    fill_in 'password', :with => "password"
+    click_on 'Login'
+    expect(page).to have_content 'Email / password is invalid'
+  end
 end
