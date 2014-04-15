@@ -17,6 +17,6 @@ To run the migrations on heroku, run `heroku run 'rake db:migrate' --app <App na
 do not have a Heroku configuration variable named DATABASE_URL, then you will need to create one.
 
 #URLs
-Staging URL: [cryptic-falls-6403.herokuapp.com](cryptic-falls-6403.herokuapp.com)  
-Production URL: [salty-eyrie-1228.herokuapp.com](salty-eyrie-1228.herokuapp.com)  
+Staging URL: [http://cryptic-falls-6403.herokuapp.com](http://cryptic-falls-6403.herokuapp.com/)  
+Production URL: [http://salty-eyrie-1228.herokuapp.com](http://salty-eyrie-1228.herokuapp.com)  
 Tracker URL: https://www.pivotaltracker.com/n/projects/1060100  
