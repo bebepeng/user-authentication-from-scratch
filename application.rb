@@ -45,8 +45,8 @@ class Application < Sinatra::Application
 
   post '/login' do
     email = params[:email]
-    #password_input = params[:password]
-    if @users_table[:email => email].nil?
+    password_input = params[:password]
+    if @users_table[:email => email].nil? || BCrypt::Password.new(@users_table[:email => email][:password]) != password_input
       erb :login, :locals => {:error => 'Email / password is invalid.'}
     else
       session[:id] = @users_table[:email => email][:id]

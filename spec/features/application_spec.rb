@@ -46,4 +46,19 @@ feature 'User Authentication App' do
     click_on 'Login'
     expect(page).to have_content 'Email / password is invalid'
   end
+
+  scenario 'User should see error message if password is incorrectly entered' do
+    visit '/'
+    click_on 'Register'
+    fill_in 'email', :with => "sample@example.com"
+    fill_in 'password', :with => "password"
+    click_on 'Register'
+    click_on 'Logout'
+
+    click_on 'Login'
+    fill_in 'email', :with => "sample@example.com"
+    fill_in 'password', :with => "oops"
+    click_on 'Login'
+    expect(page).to have_content 'Email / password is invalid'
+  end
 end
