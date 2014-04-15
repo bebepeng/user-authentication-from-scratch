@@ -8,7 +8,6 @@ class Application < Sinatra::Application
   def initialize(app=nil)
     super(app)
     @users_table = DB[:users]
-    @users_table.delete
 
     # initialize any other instance variables for you
     # application below this comment. One example would be repositories
