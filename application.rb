@@ -38,4 +38,15 @@ class Application < Sinatra::Application
     session.clear
     redirect '/'
   end
+
+  get '/login' do
+    erb :login
+  end
+
+  post '/login' do
+    email = params[:email]
+    #password_input = params[:password]
+    session[:id] = @users_table[:email => email][:id]
+    redirect '/'
+  end
 end
