@@ -1,3 +1,26 @@
 body {
     background-color: orange;
 }
+
+.registration {
+    text-align: center;
+    align-content: center;
+    margin: auto;
+}
+
+table {
+    margin: 2em auto 2em;
+    text-align: left;
+}
+
+td {
+    padding: 1em;
+}
+
+h1 {
+    font-size: 5em;
+}
+
+.home {
+    margin: 2em;
+}

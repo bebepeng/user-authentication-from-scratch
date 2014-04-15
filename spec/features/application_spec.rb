@@ -11,9 +11,9 @@ feature 'User Authentication App' do
     fill_in 'email', :with => "sample@example.com"
     fill_in 'password', :with => "password"
     click_on 'Register'
-    expect(page).to have_content 'Hello sample@example.com'
+    expect(page).to have_content 'Welcome, sample@example.com'
 
     click_on 'Logout'
-    expect(page).to_not have_content "Hello sample@example.com"
+    expect(page).to_not have_content "Welcome, sample@example.com"
   end
 end

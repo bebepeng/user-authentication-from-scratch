@@ -16,7 +16,11 @@ class Application < Sinatra::Application
   end
 
   get '/' do
-    erb :index
+    if session[:id].nil?
+      erb :index
+    else
+      erb :index, :locals => {:email => @users_table[:id => session[:id]][:email]}
+    end
   end
 
   get '/register' do
@@ -27,14 +31,10 @@ class Application < Sinatra::Application
     email = params[:email]
     password = BCrypt::Password.create(params[:password])
     session[:id] = @users_table.insert(:email => email, :password => password)
-    redirect '/home'
+    redirect '/'
   end
 
-  get '/home' do
-    erb :home, :locals => {:email => @users_table[:id => session[:id]][:email]}
-  end
-
-  post '/home' do
+  get '/logout' do
     session.clear
     redirect '/'
   end
