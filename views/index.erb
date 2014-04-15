@@ -3,8 +3,10 @@
     <h1>
       You are not logged in.
     </h1>
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
+    <table>
+    <td><a href="/login">Login</a></td>
+    <td><a href="/register">Register</a></td>
+    </table>
   <% else %>
     <h1>Welcome, <%= email %></h1>
     <a href="/logout">Logout</a>
