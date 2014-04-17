@@ -19,7 +19,7 @@ class Application < Sinatra::Application
     if session[:id].nil?
       erb :index
     else
-      erb :index, :locals => {:email => @users_table[:id => session[:id]][:email]}
+      erb :index, :locals => {:email => @users_table[:id => session[:id]][:email], :is_admin => @users_table[:id => session[:id]][:admin]}
     end
   end
 
@@ -52,5 +52,9 @@ class Application < Sinatra::Application
       session[:id] = @users_table[:email => email][:id]
       redirect '/'
     end
+  end
+
+  get '/users' do
+    erb :users, :locals => {:all_users => @users_table.to_a, :email => @users_table[:id => session[:id]][:email]}
   end
 end

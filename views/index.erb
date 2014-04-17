@@ -3,12 +3,18 @@
     <h1>
       You are not logged in.
     </h1>
-    <table>
-    <td><a href="/login">Login</a></td>
-    <td><a href="/register">Register</a></td>
+    <table class="links">
+      <td><a href="/login">Login</a></td>
+      <td><a href="/register">Register</a></td>
     </table>
   <% else %>
     <h1>Welcome, <%= email %></h1>
-    <a href="/logout">Logout</a>
+    <table class="links">
+    <td><a href="/logout">Logout</a></td>
+    <% if is_admin %>
+      <td><a href="/users">View all users</a></td>
+    <% end %>
+    </table>
   <% end %>
+
 </div>

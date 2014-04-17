@@ -61,4 +61,27 @@ feature 'User Authentication App' do
     click_on 'Login'
     expect(page).to have_content 'Email / password is invalid'
   end
+
+  scenario 'Admin can see a list of all users' do
+    visit '/'
+    click_on 'Register'
+    fill_in 'email', :with => "sample@example.com"
+    fill_in 'password', :with => "password"
+    click_on 'Register'
+
+    DB[:users].where(:email => 'sample@example.com').update(:admin => true)
+
+    click_on 'Logout'
+    click_on 'Login'
+    fill_in 'email', :with => "sample@example.com"
+    fill_in 'password', :with => "password"
+    click_on 'Login'
+    click_on 'View all users'
+    expect(page).to have_content 'Users'
+
+
+  end
+  #Given a logged in user
+  #When the user clicks on "View all users" (only visible for administrator users)
+  #Then they should see a list of all users, including their ids and email addresses
 end

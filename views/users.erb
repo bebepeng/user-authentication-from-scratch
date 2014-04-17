@@ -1,0 +1,20 @@
+<div class="admin">
+  <div class="header">
+    <div class="header_left"><a href="/">Home</a></div>
+    <div class="header_right">Welcome, <%= email %> | <a href="/logout">logout</a></div>
+  </div>
+
+  <h1>Users</h1>
+  <table class="user">
+    <tr>
+      <th class="first">ID</th>
+      <th>Email</th>
+    </tr>
+    <% all_users.each do |user| %>
+      <tr>
+        <td class="first"><%= user[:id] %></td>
+        <td><%= user[:email] %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

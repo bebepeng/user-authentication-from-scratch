@@ -13,12 +13,12 @@ body {
     text-align: left;
 }
 
-td {
+.form_table td {
     padding: 1em;
 }
 
 h1 {
-    font-size: 5em;
+    font-size: 4em;
 }
 
 .home {
@@ -27,4 +27,43 @@ h1 {
 
 .error {
     color: red;
+}
+
+.header {
+    display: inline-block;
+    width: 100%;
+    padding-top: 1em;
+}
+
+.header_left {
+    float: left;
+}
+
+.header_right {
+    padding-right: 1em;
+    float: right;
+}
+
+.admin {
+    padding: 1em;
+}
+
+.user {
+    border: 2px solid;
+}
+
+.first {
+    border-right: 2px solid;
+}
+
+.user th {
+    background: rgba(128, 128, 128, 0.8);
+}
+
+.user th, .user td {
+    padding: .7em;
+}
+
+.links td {
+    padding: 1em;
 }
