@@ -126,4 +126,21 @@ feature 'User Authentication App' do
     click_on 'Register'
     expect(page).to have_content 'Please enter a password'
   end
+
+  scenario 'User cannot register the same email twice' do
+    visit '/'
+    click_on 'Register'
+    fill_in 'email', :with => "sample@example.com"
+    fill_in 'password', :with => "password"
+    fill_in 'confirmation_password', :with => "password"
+    click_on 'Register'
+    click_on 'Logout'
+
+    click_on 'Register'
+    fill_in 'email', :with => "sample@example.com"
+    fill_in 'password', :with => "password"
+    fill_in 'confirmation_password', :with => "password"
+    click_on 'Register'
+    expect(page).to have_content 'That email is already taken'
+  end
 end
