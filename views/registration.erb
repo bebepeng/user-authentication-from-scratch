@@ -1,6 +1,8 @@
 <div class="registration">
   <h1>Register</h1>
 
+  <p class="error"><%= error %></p>
+
   <form method="post" action="/register">
     <table class="form_table">
       <tr>
@@ -10,6 +12,10 @@
       <tr>
         <td>Password</td>
         <td><input type="password" name="password"></td>
+      </tr>
+      <tr>
+        <td>Confirm Password</td>
+        <td><input type="password" name="confirmation_password"></td>
       </tr>
     </table>
     <input type="submit" value="Register">

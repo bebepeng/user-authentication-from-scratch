@@ -15,6 +15,7 @@ feature 'User Authentication App' do
     click_on 'Register'
     fill_in 'email', :with => "sample@example.com"
     fill_in 'password', :with => "password"
+    fill_in 'confirmation_password', :with => "password"
     click_on 'Register'
     expect(page).to have_content 'Welcome, sample@example.com'
 
@@ -28,6 +29,7 @@ feature 'User Authentication App' do
     click_on 'Register'
     fill_in 'email', :with => "sample@example.com"
     fill_in 'password', :with => "password"
+    fill_in 'confirmation_password', :with => "password"
     click_on 'Register'
     click_on 'Logout'
 
@@ -52,6 +54,7 @@ feature 'User Authentication App' do
     click_on 'Register'
     fill_in 'email', :with => "sample@example.com"
     fill_in 'password', :with => "password"
+    fill_in 'confirmation_password', :with => "password"
     click_on 'Register'
     click_on 'Logout'
 
@@ -67,6 +70,7 @@ feature 'User Authentication App' do
     click_on 'Register'
     fill_in 'email', :with => "sample@example.com"
     fill_in 'password', :with => "password"
+    fill_in 'confirmation_password', :with => "password"
     click_on 'Register'
 
     DB[:users].where(:email => 'sample@example.com').update(:admin => true)
@@ -85,10 +89,21 @@ feature 'User Authentication App' do
     click_on 'Register'
     fill_in 'email', :with => "sample@example.com"
     fill_in 'password', :with => "password"
+    fill_in 'confirmation_password', :with => "password"
     click_on 'Register'
     expect(page).to_not have_content 'View all users'
 
     visit '/users'
     expect(page).to have_content 'Not Found'
+  end
+
+  scenario 'User cannot register if password does not match confirmation password' do
+    visit '/'
+    click_on 'Register'
+    fill_in 'email', :with => "sample@example.com"
+    fill_in 'password', :with => "password"
+    fill_in 'confirmation_password', :with => "oops"
+    click_on 'Register'
+    expect(page).to have_content 'Passwords do not match'
   end
 end
