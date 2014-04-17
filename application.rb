@@ -24,12 +24,16 @@ class Application < Sinatra::Application
 
   post '/register' do
     email = params[:email]
-    if params[:password] == params[:confirmation_password]
+    matching_password = params[:password].eql?(params[:confirmation_password])
+    password_length = (params[:password].length > 3)
+    if matching_password && password_length
       password = BCrypt::Password.create(params[:password])
       session[:id] = @users_table.insert(:email => email, :password => password)
       redirect '/'
-    else
+    elsif !matching_password
       erb :registration, :locals => {:error => 'Passwords do not match'}
+    else
+      erb :registration, :locals => {:error => 'Password is too short (3 character min)'}
     end
   end
 
