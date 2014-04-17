@@ -116,4 +116,14 @@ feature 'User Authentication App' do
     click_on 'Register'
     expect(page).to have_content 'Password is too short (3 character min)'
   end
+
+  scenario 'User cannot register if password is blank' do
+    visit '/'
+    click_on 'Register'
+    fill_in 'email', :with => "sample@example.com"
+    fill_in 'password', :with => ""
+    fill_in 'confirmation_password', :with => ""
+    click_on 'Register'
+    expect(page).to have_content 'Please enter a password'
+  end
 end

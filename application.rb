@@ -26,10 +26,13 @@ class Application < Sinatra::Application
     email = params[:email]
     matching_password = params[:password].eql?(params[:confirmation_password])
     password_length = (params[:password].length > 3)
-    if matching_password && password_length
+    is_blank = params[:password].empty?
+    if matching_password && password_length && !is_blank
       password = BCrypt::Password.create(params[:password])
       session[:id] = @users_table.insert(:email => email, :password => password)
       redirect '/'
+    elsif is_blank
+      erb :registration, :locals => {:error => 'Please enter a password'}
     elsif !matching_password
       erb :registration, :locals => {:error => 'Passwords do not match'}
     else
