@@ -55,6 +55,16 @@ class Application < Sinatra::Application
   end
 
   get '/users' do
+    redirect '/error' if @users_table[:id => session[:id]].nil? || !@users_table[:id => session[:id]][:admin]
+
     erb :users, :locals => {:all_users => @users_table.to_a, :email => @users_table[:id => session[:id]][:email]}
+  end
+
+  get '/error' do
+    erb :error
+  end
+
+  not_found do
+    redirect '/error'
   end
 end

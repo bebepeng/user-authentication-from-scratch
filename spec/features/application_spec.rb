@@ -78,10 +78,17 @@ feature 'User Authentication App' do
     click_on 'Login'
     click_on 'View all users'
     expect(page).to have_content 'Users'
-
-
   end
-  #Given a logged in user
-  #When the user clicks on "View all users" (only visible for administrator users)
-  #Then they should see a list of all users, including their ids and email addresses
+
+  scenario 'Non-admin cannot access list of all users' do
+    visit '/'
+    click_on 'Register'
+    fill_in 'email', :with => "sample@example.com"
+    fill_in 'password', :with => "password"
+    click_on 'Register'
+    expect(page).to_not have_content 'View all users'
+
+    visit '/users'
+    expect(page).to have_content 'Not Found'
+  end
 end
