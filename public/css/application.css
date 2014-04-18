@@ -1,5 +1,13 @@
 body {
-    background-color: orange;
+    text-align: center;
+    height: 100%;
+    position: relative;
+    background-image: url('../background.jpg');
+    width: 100%;
+}
+
+a {
+    color: #fff;
 }
 
 .registration {
@@ -21,22 +29,13 @@ h1 {
     font-size: 4em;
 }
 
-.home {
-    margin: 2em;
-}
-
 .error {
     color: red;
 }
 
-.header {
-    display: inline-block;
-    width: 100%;
-    padding-top: 1em;
-}
-
 .header_left {
     float: left;
+    font-size: 2em;
 }
 
 .header_right {
@@ -50,6 +49,7 @@ h1 {
 
 .user {
     border: 2px solid;
+    margin: auto;
 }
 
 .first {
@@ -66,4 +66,108 @@ h1 {
 
 .links td {
     padding: 1em;
+}
+
+#header_container {
+    background-color: #494F46;
+    padding: 3%;
+    margin: auto;
+    text-align: left;
+    color: #fff;
+}
+
+.links {
+    margin: auto;
+}
+
+.half_page {
+    width: 48%;
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    float: left;
+}
+
+.half_link_left {
+    margin: 1%;
+    text-align: center;
+    width: 20%;
+    position: relative;
+    float: right;
+    background-color: #494F46;
+    border-radius: 1em;
+}
+
+.half_link_right {
+    margin: 1%;
+    text-align: center;
+    width: 20%;
+    position: relative;
+    float: left;
+    background-color: #494F46;
+    border-radius: 1em;
+}
+
+footer {
+    background-color: #494F46;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+#footer_container {
+    background-color: darkgray;
+    margin: auto;
+}
+
+#footer {
+    float: right; /* or float: left */
+    margin: 0 10px 0 0;
+}
+
+#footer li {
+    float: left;
+    list-style: none;
+}
+
+#footer li a {
+    font-size: 120%;
+    font-weight: bold;
+    color: #fff;
+    padding: 17px 25px 15px 25px;
+    display: block;
+    text-decoration: none;
+}
+
+#footer li a:hover {
+    color: #fff;
+    background-color: #3b2c2c;
+}
+
+/*Borders between each button */
+#footer li + li {
+    border-left: 1px solid #000;
+}
+
+/*Borders on both sides */
+#footer li:first-child a {
+    border-left: 1px solid #000;
+}
+
+#footer li:last-child a {
+    border-right: 1px solid #000;
+}
+
+#content {
+    padding-top: 5%;
+
+}
+
+.text_body {
+    padding: 1px 1px 1px 1px;
+    border-radius: 1em;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 96%;
+    margin: auto;
 }

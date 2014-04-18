@@ -71,4 +71,18 @@ class Application < Sinatra::Application
   not_found do
     redirect '/error'
   end
+
+  get '/mission' do
+    if session[:id]
+      email =@users_table[:id => session[:id]][:email]
+    end
+    erb :mission, :locals => {:email => email}
+  end
+
+  get '/about' do
+    if session[:id]
+      email =@users_table[:id => session[:id]][:email]
+    end
+    erb :about, :locals => {:email => email}
+  end
 end

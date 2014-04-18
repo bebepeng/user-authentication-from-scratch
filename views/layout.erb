@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.ico"/>
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/application.css" rel="stylesheet" type="text/css">
   <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<div>
-  <header>
-    <div id="header_container">
-      User Authentication
-    </div>
-  </header>
+<header>
+  <div id="header_container">
+    <div class="header_left">User Authentication</div>
+    <% if session[:id] %>
+      <div class="header_right"><a href="/">Home</a></div>
+      <div class="header_right">Welcome, <%= email %> | <a href="/logout">logout</a></div>
+    <% end %>
+  </div>
+</header>
+<div id="content">
   <%= yield %>
 </div>
+<footer>
+  <div id="footer_container">
+    <ul id="footer">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/mission">Mission</a></li>
+    </ul>
+  </div>
+</footer>
 </body>
 </html>
