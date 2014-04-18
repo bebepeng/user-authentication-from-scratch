@@ -14,7 +14,7 @@ class RegistrationRequirements
   def error
     if !table[:email => email].nil?
       'That email is already taken'
-    elsif password == ''
+    elsif password.strip.empty?
       'Please enter a password'
     elsif password.length < 3
       'Password is too short (3 character min)'

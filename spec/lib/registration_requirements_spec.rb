@@ -36,4 +36,10 @@ describe RegistrationRequirements do
     expect(req.valid?).to be_false
     expect(req.error).to eq 'Passwords do not match'
   end
+
+  it 'is invalid if the password is a blank string' do
+    req = RegistrationRequirements.new('ex@ex', '  ', '', DB[:users])
+    expect(req.valid?).to be_false
+    expect(req.error).to eq 'Please enter a password'
+  end
 end
