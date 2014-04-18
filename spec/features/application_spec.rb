@@ -111,8 +111,8 @@ feature 'User Authentication App' do
     visit '/'
     click_on 'Register'
     fill_in 'email', :with => "sample@example.com"
-    fill_in 'password', :with => "123"
-    fill_in 'confirmation_password', :with => "123"
+    fill_in 'password', :with => "12"
+    fill_in 'confirmation_password', :with => "12"
     click_on 'Register'
     expect(page).to have_content 'Password is too short (3 character min)'
   end

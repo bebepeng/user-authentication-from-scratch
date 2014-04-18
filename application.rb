@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'bcrypt'
+require_relative './lib/registration_requirements'
 
 class Application < Sinatra::Application
 
@@ -24,22 +25,16 @@ class Application < Sinatra::Application
 
   post '/register' do
     email = params[:email]
-    matching_password = params[:password].eql?(params[:confirmation_password])
-    password_length = (params[:password].length > 3)
-    is_blank = params[:password].empty?
-    email_not_taken = @users_table[:email => email].nil?
-    if matching_password && password_length && !is_blank && email_not_taken
+    pass = params[:password]
+    conf_pass = params[:confirmation_password]
+    requirements = RegistrationRequirements.new(email, pass, conf_pass, @users_table)
+
+    if requirements.valid?
       password = BCrypt::Password.create(params[:password])
       session[:id] = @users_table.insert(:email => email, :password => password)
       redirect '/'
-    elsif !email_not_taken
-      erb :registration, :locals => {:error => 'That email is already taken'}
-    elsif is_blank
-      erb :registration, :locals => {:error => 'Please enter a password'}
-    elsif !matching_password
-      erb :registration, :locals => {:error => 'Passwords do not match'}
     else
-      erb :registration, :locals => {:error => 'Password is too short (3 character min)'}
+      erb :registration, :locals => {:error => requirements.error}
     end
   end
 
